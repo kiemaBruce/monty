@@ -40,20 +40,16 @@ int main(int argc, char **argv)
 		gl = getline(&str, &n, monty_f);
 		if (gl == -1)
 		{
-			/*free_strings_s(st);*/
-			free(str);
-			/*fclose(monty_f);*/
 			if (errno != 0)
 			{
+				/*free(str);*/
 				perror("Getline");
-				/*exit(EXIT_FAILURE);*/
 				e = EXIT_FAILURE;
 			} else
-			{
-				/*exit(EXIT_SUCCESS);*/ /* EOF */
+			{ /* EOF */
 				e = EXIT_SUCCESS;
 			}
-			/*free_strings_s(st);*/
+			free(str);
 			free_stack();
 			fclose(monty_f);
 			exit(EXIT_FAILURE);
@@ -64,28 +60,25 @@ int main(int argc, char **argv)
 		{
 			e = EXIT_FAILURE;
 			break;
-			/*exit(EXIT_FAILURE);*/
 		}
 		p = str_parser(str, st);
 		if (p == -1)
 		{
-			/*free_strings_s(st);*/
 			e = EXIT_FAILURE;
 			break;
-			/*exit(EXIT_FAILURE);*/
 		}
 		if (p == 1)
 		{
+			free(str);
 			free_strings_s(st);
 			continue;
 		}
-		/*p2 = str_parser2(st->s2, line_number);*/
 		if (str_parser2(st->s2, line_number) == -1)
 		{
 			e = EXIT_FAILURE;
 			break;
 		}
-		/*printall();*/
+		/*free(str);*/
 		free_strings_s(st);
 	}
 	free_strings_s(st);
