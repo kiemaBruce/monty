@@ -6,7 +6,7 @@
 void printall(void)
 {
 	stack_t *temp;
-	
+
 	if (top != NULL)
 	{
 		temp = top;
@@ -33,6 +33,6 @@ void free_stack(void)
 			free(temp);
 			temp = temp2;
 		}
-		free(top);
+		/*free(top);*/
 	}
 }

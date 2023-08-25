@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 				/*exit(EXIT_SUCCESS);*/ /* EOF */
 				e = EXIT_SUCCESS;
 			}
+			/*free_strings_s(st);*/
 			free_stack();
 			fclose(monty_f);
 			exit(EXIT_FAILURE);
@@ -155,6 +156,12 @@ int str_parser(char *s, strings_t *st)
 	if (getlen(s) == 1 && s[0] == '\n')
 		return (1);
 	i = 0;
+	while (s[i] != '\0') /* Remove terminating newline */
+	{
+		if (s[i] == '\n')
+			s[i] = '\0';
+		i++;
+	}
 	for (i = 0; i < getlen(s); i++) /* Replace tabs with spaces */
 	{
 		if (s[i] == '\t')
