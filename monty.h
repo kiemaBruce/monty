@@ -62,5 +62,6 @@ int check_string(char *s1, char *s2);
 int str_parser2(char *s, unsigned int line_number);
 int check_int(char *s);
 int getlen(char *s);
+void free_stack(void);
 
 #endif /* MONTY_H */

@@ -45,6 +45,7 @@ int str_parser2(char *s, unsigned int line_number)
 	} else if (check_string(s1, "pall") == 0)
 	{
 		printall();
+		r = 0;
 	}
 	else
 	{

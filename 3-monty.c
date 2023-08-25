@@ -21,3 +21,22 @@ void printall(void)
 		}
 	}
 }
+/**
+  * free_stack - frees a stack_t stack.
+  */
+void free_stack(void)
+{
+	stack_t *temp, *temp2;
+
+	if (top != NULL)
+	{
+		temp = top;
+		while (temp != NULL)
+		{
+			temp2 = temp->next;
+			free(temp);
+			temp = temp2;
+		}
+		free(top);
+	}
+}

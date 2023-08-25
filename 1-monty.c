@@ -13,7 +13,7 @@ stack_t *top;
   */
 int main(int argc, char **argv)
 {
-	int e, p, p2;
+	int e, p;
 	FILE *monty_f;
 	ssize_t gl;
 	char *str;
@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 				/*exit(EXIT_SUCCESS);*/ /* EOF */
 				e = EXIT_SUCCESS;
 			}
+			free_stack();
 			fclose(monty_f);
 			exit(EXIT_FAILURE);
 		}
@@ -77,8 +78,8 @@ int main(int argc, char **argv)
 			free_strings_s(st);
 			continue;
 		}
-		p2 = str_parser2(st->s2, line_number);
-		if (p2 == -1)
+		/*p2 = str_parser2(st->s2, line_number);*/
+		if (str_parser2(st->s2, line_number) == -1)
 		{
 			e = EXIT_FAILURE;
 			break;
@@ -88,6 +89,7 @@ int main(int argc, char **argv)
 	}
 	free_strings_s(st);
 	fclose(monty_f);
+	free_stack();
 	exit(e);
 	return (0);
 }
@@ -153,12 +155,6 @@ int str_parser(char *s, strings_t *st)
 	if (getlen(s) == 1 && s[0] == '\n')
 		return (1);
 	i = 0;
-	while (s[i] != '\0') /* Remove terminating newline */
-	{
-		if (s[i] == '\n')
-			s[i] = '\0';
-		i++;
-	}
 	for (i = 0; i < getlen(s); i++) /* Replace tabs with spaces */
 	{
 		if (s[i] == '\t')
