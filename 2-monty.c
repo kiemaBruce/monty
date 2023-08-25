@@ -50,7 +50,7 @@ int str_parser2(char *s, unsigned int line_number)
 	else
 	{
 		/*After checking for all functions */
-		printf("L%u: unknown instruction %s\n", line_number, sm);
+		printf("L%u: unknown instruction %s\n", line_number, s1);
 		r = -1;
 	}
 	free(sm);
