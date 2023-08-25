@@ -6,12 +6,8 @@
 void printall(void)
 {
 	stack_t *temp;
-
-	if (top == NULL)
-	{
-		dprintf(STDERR_FILENO, "Stack underflow\n");
-	}
-	else
+	
+	if (top != NULL)
 	{
 		temp = top;
 		while (temp != NULL)
