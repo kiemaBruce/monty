@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void blank_declaration(void);
+/*void blank_declaration(void);*/
 stack_t *top;
 
 /**
