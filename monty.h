@@ -49,6 +49,7 @@ typedef struct strings_s
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
+#include <stdarg.h>
 
 extern stack_t *top;
 /*instruction_t *push(stack_t **stack, unsigned int line_number);*/
@@ -63,5 +64,6 @@ int str_parser2(char *s, unsigned int line_number);
 int check_int(char *s);
 int getlen(char *s);
 void free_stack(void);
+void print_error_and_exit(int n, char *err, ...);
 
 #endif /* MONTY_H */
