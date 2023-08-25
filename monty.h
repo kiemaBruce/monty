@@ -31,13 +31,36 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+  * struct strings_s - a struct for strings.
+  * @s1: the first string.
+  * @s2: the second string.
+  * Description: this struct is for ease of passing two strings to
+  * a function or returning the same from a function.
+  */
+typedef struct strings_s
+{
+	char *s1;
+	char *s2;
+} strings_t;
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
+#include <string.h>
 
 extern stack_t *top;
-void push(void);
+/*instruction_t *push(stack_t **stack, unsigned int line_number);*/
+void push(int n);
 void printall(void);
 void pop(void);
+int str_parser(char *s, strings_t *st);
+void free_strings_s(strings_t *st);
+strings_t *initialize_strings_s(void);
+int check_string(char *s1, char *s2);
+int str_parser2(char *s, unsigned int line_number);
+int check_int(char *s);
+int getlen(char *s);
 
 #endif /* MONTY_H */
