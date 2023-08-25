@@ -10,10 +10,21 @@ int check_int(char *s)
 {
 	int i;
 
-	for (i = 0; i < getlen(s); i++)
+	/* For negative numbers */
+	if (s[0] == '-')
 	{
-		if (s[i] < 48 || s[i] > 57)
-			return (-1);
+		for (i = 1; i < getlen(s); i++)
+		{
+			if (s[i] < 48 || s[i] > 57)
+				return (-1);
+		}
+	} else
+	{
+		for (i = 0; i < getlen(s); i++)
+		{
+			if (s[i] < 48 || s[i] > 57)
+				return (-1);
+		}
 	}
 	return (0);
 }

@@ -78,7 +78,6 @@ int main(int argc, char **argv)
 			e = EXIT_FAILURE;
 			break;
 		}
-		/*free(str);*/
 		free_strings_s(st);
 	}
 	free_strings_s(st);
