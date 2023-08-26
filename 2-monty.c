@@ -49,13 +49,11 @@ int str_parser2(char *s, unsigned int line_number)
 			r = -1;
 		} else
 		{
-			push(atoi(s2));
-			r = 0;
+			r = push(atoi(s2));
 		}
 	} else if (check_string(s1, "pall") == 0)
 	{
-		printall();
-		r = 0;
+		r = printall();
 	} else if (check_string(s1, "pint") == 0)
 	{
 		r = pint(line_number);
@@ -65,13 +63,15 @@ int str_parser2(char *s, unsigned int line_number)
 	} else if (check_string(s1, "swap") == 0)
 	{
 		r = swap(line_number);
+	} else if (check_string(s1, "add") == 0)
+	{
+		r = add(line_number);
 	} else if (check_string(s1, "nop") == 0)
 	{
 		r = 0;
 	}
 	else
-	{
-		/*After checking for all functions */
+	{/*After checking for all functions */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
 		r = -1;
 	}
@@ -101,8 +101,9 @@ int check_string(char *s1, char *s2)
 /**
   * push - adds a new element on top of the stack.
   * @n: the new element to be added.
+  * Return: 0 on success and -1 on failure.
   */
-void push(int n)
+int push(int n)
 {
 	stack_t *new;
 
@@ -110,7 +111,7 @@ void push(int n)
 	if (new == NULL)
 	{
 		dprintf(STDERR_FILENO, "Stack overflow\n");
-		return;
+		return (-1);
 	}
 	if (top == NULL) /* Empty stack */
 	{
@@ -127,6 +128,7 @@ void push(int n)
 		top->prev = new;
 		top = new;
 	}
+	return (0);
 }
 /**
   * pop - removes the top element of the stack.

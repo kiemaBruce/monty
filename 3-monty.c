@@ -1,9 +1,11 @@
 #include "monty.h"
 /**
   * printall - prints all elements of the stack.
-  * Description: if the stack is empty it prints stack underflow.
+  * Description: if the stack is empty the function does nothing and just
+  * returns 0.
+  * Return: 0 on success (always).
   */
-void printall(void)
+int printall(void)
 {
 	stack_t *temp;
 
@@ -16,6 +18,7 @@ void printall(void)
 			temp = temp->next;
 		}
 	}
+	return (0);
 }
 /**
   * free_stack - frees a stack_t stack.

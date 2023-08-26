@@ -53,8 +53,8 @@ typedef struct strings_s
 
 extern stack_t *top;
 /*instruction_t *push(stack_t **stack, unsigned int line_number);*/
-void push(int n);
-void printall(void);
+int push(int n);
+int printall(void);
 int pop(unsigned int line_number);
 int str_parser(char *s, strings_t *st);
 void free_strings_s(strings_t *st);
@@ -68,5 +68,6 @@ void print_error_and_exit(int n, char *err, ...);
 int pint(unsigned int line_number);
 int count_stack(void);
 int swap(unsigned int line_number);
+int add(unsigned int line_number);
 
 #endif /* MONTY_H */
