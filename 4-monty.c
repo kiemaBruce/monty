@@ -90,3 +90,24 @@ int divd(unsigned int line_number)
 	top->n = quotient;
 	return (0);
 }
+/**
+  * mul - multiplies the top and the second top element of the stack.
+  * @line_number: the line being processed in the opcode file.
+  * Return: -1 if the stack has less than two elements and 0 if it is
+  * successful.
+  */
+int mul(unsigned int line_number)
+{
+	int prod;
+
+	if (count_stack() < 2)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't mul, stack too short\n",
+				line_number);
+		return (-1);
+	}
+	prod = (top->next)->n * top->n;
+	pop(line_number);
+	top->n = prod;
+	return (0);
+}

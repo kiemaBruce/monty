@@ -66,6 +66,8 @@ int str_parser2(char *s, unsigned int line_number)
 		r = 0;
 	else if (check_string(s1, "sub") == 0)
 		r = sub(line_number);
+	else if (check_string(s1, "mul") == 0)
+		r = mul(line_number);
 	else if (check_string(s1, "div") == 0)
 		r = divd(line_number);
 	else
