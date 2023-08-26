@@ -65,7 +65,11 @@ int str_parser2(char *s, unsigned int line_number)
 	} else if (check_string(s1, "swap") == 0)
 	{
 		r = swap(line_number);
-	} else
+	} else if (check_string(s1, "nop") == 0)
+	{
+		r = 0;
+	}
+	else
 	{
 		/*After checking for all functions */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
