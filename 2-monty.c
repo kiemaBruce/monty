@@ -36,10 +36,9 @@ int check_int(char *s)
   */
 int str_parser2(char *s, unsigned int line_number)
 {
-	char *s1, *s2, *sm;
+	char *s1, *s2;
 	int r;
 
-	sm = strdup(s);
 	s1 = strtok(s, " ");
 	if (check_string(s1, "push") == 0)
 	{
@@ -60,13 +59,15 @@ int str_parser2(char *s, unsigned int line_number)
 	} else if (check_string(s1, "pint") == 0)
 	{
 		r = pint(line_number);
+	} else if (check_string(s1, "pop") == 0)
+	{
+		r = pop(line_number);
 	} else
 	{
 		/*After checking for all functions */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
 		r = -1;
 	}
-	free(sm);
 	return (r);
 }
 /**
@@ -122,25 +123,28 @@ void push(int n)
 }
 /**
   * pop - removes the top element of the stack.
+  * @line_number: the current line in the opcode file being processed.
+  * Return: 0 if it is successful in popping and -1 if the stack is empty.
   */
-void pop(void)
+int pop(unsigned int line_number)
 {
 	stack_t *temp;
 
 	if (top == NULL)
 	{
-		dprintf(STDERR_FILENO, "Stack underflow\n");
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n",
+				line_number);
+		return (-1);
+	}
+	temp = top;
+	if (top->next == NULL)
+	{
+		top = NULL;
 	} else
 	{
-		temp = top;
-		if (top->next == NULL)
-		{
-			top = NULL;
-		} else
-		{
-			(top->next)->prev = NULL;
-			top = top->next;
-		}
-		free(temp);
+		(top->next)->prev = NULL;
+		top = top->next;
 	}
+	free(temp);
+	return (0);
 }

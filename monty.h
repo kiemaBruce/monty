@@ -55,7 +55,7 @@ extern stack_t *top;
 /*instruction_t *push(stack_t **stack, unsigned int line_number);*/
 void push(int n);
 void printall(void);
-void pop(void);
+int pop(unsigned int line_number);
 int str_parser(char *s, strings_t *st);
 void free_strings_s(strings_t *st);
 strings_t *initialize_strings_s(void);
