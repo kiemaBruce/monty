@@ -43,3 +43,24 @@ int add(unsigned int line_number)
 	top->n = sum;
 	return (0);
 }
+/**
+  * sub - subtracts the top from the second top element of stack.
+  * @line_number: the line being processed in the opcode file.
+  * Return: 0 if it is successful and -1 if the stack has less than two
+  * elements.
+  */
+int sub(unsigned int line_number)
+{
+	int ln, diff;
+
+	ln = line_number;
+	if (count_stack() < 2)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", ln);
+		return (-1);
+	}
+	diff = (top->next)->n - top->n;
+	pop(line_number);
+	top->n = diff;
+	return (0);
+}

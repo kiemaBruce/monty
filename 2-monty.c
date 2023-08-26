@@ -51,25 +51,21 @@ int str_parser2(char *s, unsigned int line_number)
 		{
 			r = push(atoi(s2));
 		}
-	} else if (check_string(s1, "pall") == 0)
-	{
-		r = printall();
-	} else if (check_string(s1, "pint") == 0)
-	{
-		r = pint(line_number);
-	} else if (check_string(s1, "pop") == 0)
-	{
-		r = pop(line_number);
-	} else if (check_string(s1, "swap") == 0)
-	{
-		r = swap(line_number);
-	} else if (check_string(s1, "add") == 0)
-	{
-		r = add(line_number);
-	} else if (check_string(s1, "nop") == 0)
-	{
-		r = 0;
 	}
+	else if (check_string(s1, "pall") == 0)
+		r = printall();
+	else if (check_string(s1, "pint") == 0)
+		r = pint(line_number);
+	else if (check_string(s1, "pop") == 0)
+		r = pop(line_number);
+	else if (check_string(s1, "swap") == 0)
+		r = swap(line_number);
+	else if (check_string(s1, "add") == 0)
+		r = add(line_number);
+	else if (check_string(s1, "nop") == 0)
+		r = 0;
+	else if (check_string(s1, "sub") == 0)
+		r = sub(line_number);
 	else
 	{/*After checking for all functions */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
