@@ -13,7 +13,7 @@ int swap(unsigned int line_number)
 	ln = line_number;
 	if (count_stack() < 2)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short",
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n",
 				ln);
 		return (-1);
 	}
