@@ -62,6 +62,9 @@ int str_parser2(char *s, unsigned int line_number)
 	} else if (check_string(s1, "pop") == 0)
 	{
 		r = pop(line_number);
+	} else if (check_string(s1, "swap") == 0)
+	{
+		r = swap(line_number);
 	} else
 	{
 		/*After checking for all functions */

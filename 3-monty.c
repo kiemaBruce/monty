@@ -74,3 +74,25 @@ int pint(unsigned int line_number)
 	printf("%d\n", top->n);
 	return (0);
 }
+/**
+  * count_stack - counts the number of elements on the stack.
+  * Return: the number of elements in the stack.
+  */
+int count_stack(void)
+{
+	stack_t *temp;
+	int n;
+
+	if (top == NULL)
+		return (0);
+	temp = top;
+	n = 0;
+	while (1)
+	{
+		if (temp == NULL)
+			break;
+		n++;
+		temp = temp->next;
+	}
+	return (n);
+}
