@@ -8,13 +8,12 @@
   */
 int swap(unsigned int line_number)
 {
-	int ln, temp;
+	int temp;
 
-	ln = line_number;
 	if (count_stack() < 2)
 	{
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n",
-				ln);
+				line_number);
 		return (-1);
 	}
 	temp = top->n;
@@ -30,12 +29,12 @@ int swap(unsigned int line_number)
   */
 int add(unsigned int line_number)
 {
-	int ln, sum;
+	int sum;
 
-	ln = line_number;
 	if (count_stack() < 2)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", ln);
+		dprintf(STDERR_FILENO, "L%u: can't add, stack too short\n",
+				line_number);
 		return (-1);
 	}
 	sum = top->n + (top->next)->n;
@@ -51,16 +50,43 @@ int add(unsigned int line_number)
   */
 int sub(unsigned int line_number)
 {
-	int ln, diff;
+	int diff;
 
-	ln = line_number;
 	if (count_stack() < 2)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", ln);
+		dprintf(STDERR_FILENO, "L%u: can't sub, stack too short\n",
+				line_number);
 		return (-1);
 	}
 	diff = (top->next)->n - top->n;
 	pop(line_number);
 	top->n = diff;
+	return (0);
+}
+/**
+  * divd - divides the second top element by the top element of the stack.
+  * @line_number: the line being processed in the opcode file.
+  * Return: 0 if successful and -1 if either the stack has less than two
+  * elements or if the top element of the stack is zero.
+  */
+int divd(unsigned int line_number)
+{
+	int quotient;
+
+	if (count_stack() < 2)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't div, stack too short",
+				line_number);
+		return (-1);
+	}
+	if (top->n == 0)
+	{
+		dprintf(STDERR_FILENO, "L%u: division by zero",
+				line_number);
+		return (-1);
+	}
+	quotient = (top->next)->n / top->n;
+	pop(line_number);
+	top->n = quotient;
 	return (0);
 }
