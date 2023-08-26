@@ -67,7 +67,7 @@ int pint(unsigned int line_number)
 {
 	if (top == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty",
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n",
 				line_number);
 		return (-1);
 	}
