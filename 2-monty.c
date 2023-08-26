@@ -57,8 +57,10 @@ int str_parser2(char *s, unsigned int line_number)
 	{
 		printall();
 		r = 0;
-	}
-	else
+	} else if (check_string(s1, "pint") == 0)
+	{
+		r = pint(line_number);
+	} else
 	{
 		/*After checking for all functions */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
@@ -66,7 +68,6 @@ int str_parser2(char *s, unsigned int line_number)
 	}
 	free(sm);
 	return (r);
-	/*else if (check_string(s1, "pall") == 0)*/
 }
 /**
   * check_string - checks whether two strings are similar.

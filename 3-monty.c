@@ -58,3 +58,19 @@ void print_error_and_exit(int n, char *err, ...)
 	va_end(args);
 	exit(EXIT_FAILURE);
 }
+/**
+  * pint - prints the value at the top of the stack plus a new line.
+  * @line_number: the current line being processed in the opcode file.
+  * Return: 0 if it executes successfully and -1 if the stack is empty.
+  */
+int pint(unsigned int line_number)
+{
+	if (top == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty",
+				line_number);
+		return (-1);
+	}
+	printf("%d\n", top->n);
+	return (0);
+}

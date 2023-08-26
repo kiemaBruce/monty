@@ -65,5 +65,6 @@ int check_int(char *s);
 int getlen(char *s);
 void free_stack(void);
 void print_error_and_exit(int n, char *err, ...);
+int pint(unsigned int line_number);
 
 #endif /* MONTY_H */
