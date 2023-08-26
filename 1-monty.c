@@ -15,34 +15,25 @@ int main(int argc, char **argv)
 {
 	int e, p;
 	FILE *monty_f;
-	ssize_t gl;
 	char *str;
 	size_t n;
 	strings_t *st;
 	unsigned int line_number;
 
 	if (argc != 2)
-	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		print_error_and_exit(1, "USAGE: monty file");
 	monty_f = fopen(argv[1], "r");
 	if (monty_f == NULL)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+		print_error_and_exit(2, "Error: Can't open file ", argv[1]);
 	line_number = 0;
 	while (1)
 	{
 		str = NULL;
 		errno = n = 0;
-		gl = getline(&str, &n, monty_f);
-		if (gl == -1)
+		if (getline(&str, &n, monty_f) == -1)
 		{
 			if (errno != 0)
 			{
-				/*free(str);*/
 				perror("Getline");
 				e = EXIT_FAILURE;
 			} else

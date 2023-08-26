@@ -46,7 +46,7 @@ int str_parser2(char *s, unsigned int line_number)
 		s2 = strtok(NULL, " ");
 		if (s2 == NULL || check_int(s2) == -1)
 		{
-			printf("L%u: usage: push integer\n", line_number);
+			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 			r = -1;
 		} else
 		{
@@ -61,7 +61,7 @@ int str_parser2(char *s, unsigned int line_number)
 	else
 	{
 		/*After checking for all functions */
-		printf("L%u: unknown instruction %s\n", line_number, s1);
+		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
 		r = -1;
 	}
 	free(sm);
