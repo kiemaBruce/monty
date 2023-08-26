@@ -75,13 +75,13 @@ int divd(unsigned int line_number)
 
 	if (count_stack() < 2)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't div, stack too short",
+		dprintf(STDERR_FILENO, "L%u: can't div, stack too short\n",
 				line_number);
 		return (-1);
 	}
 	if (top->n == 0)
 	{
-		dprintf(STDERR_FILENO, "L%u: division by zero",
+		dprintf(STDERR_FILENO, "L%u: division by zero\n",
 				line_number);
 		return (-1);
 	}
