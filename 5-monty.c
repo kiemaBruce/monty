@@ -12,7 +12,7 @@ int modu(unsigned int line_number)
 
 	if (count_stack() < 2)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't mod, stack too short",
+		dprintf(STDERR_FILENO, "L%u: can't mod, stack too short\n",
 				line_number);
 		return (-1);
 	}
