@@ -74,6 +74,10 @@ int str_parser2_helper(char *s1, unsigned int line_number)
 	{
 		r = pstr();
 	}
+	else if (check_string(s1, "rotl") == 0)
+	{
+		r = rotl();
+	}
 	else
 	{/* opcode isn't a recongnized function */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",

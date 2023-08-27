@@ -77,5 +77,6 @@ int check_comment(char *s);
 int str_parser2_helper(char *s, unsigned int line_number);
 int pchar(unsigned int line_number);
 int pstr(void);
+int rotl(void);
 
 #endif /* MONTY_H */
