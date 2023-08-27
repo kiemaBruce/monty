@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 			free_strings_s(st);
 			fclose(monty_f);
 			free_stack();
-			exit(e);
+			exit(EXIT_FAILURE);
 			/*break;*/
 		}
 		free_strings_s(st);
