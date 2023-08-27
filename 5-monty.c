@@ -117,24 +117,19 @@ int pstr(void)
 	int c;
 	stack_t *temp;
 
-	if (top == NULL)
+	temp = top;
+	while (temp != NULL)
 	{
-		printf("\n");
-	}
-	else
-	{
-		temp = top;
-		while (temp != NULL)
+		c = temp->n;
+		if (c < 0 || c > 127)
 		{
-			c = temp->n;
-			if (c == 0 || c < 0 || c > 127)
-			{
-				break;
-			}
-			printf("%c", c);
-			temp = temp->next;
+			break;
 		}
-		printf("\n");
+		printf("%c", c);
+		if (c == 0)
+			break;
+		temp = temp->next;
 	}
+	printf("\n");
 	return (0);
 }
