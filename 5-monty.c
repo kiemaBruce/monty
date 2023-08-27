@@ -16,6 +16,12 @@ int modu(unsigned int line_number)
 				line_number);
 		return (-1);
 	}
+	if (top->n == 0)
+	{
+		dprintf(STDERR_FILENO, "L%u: division by zero\n",
+				line_number);
+		return (-1);
+	}
 	mod = (top->next)->n % top->n;
 	pop(line_number);
 	top->n = mod;
