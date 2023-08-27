@@ -63,16 +63,9 @@ int str_parser2(char *s, unsigned int line_number)
 		r = 0;
 	else if (check_string(s1, "sub") == 0)
 		r = sub(line_number);
-	else if (check_string(s1, "mul") == 0)
-		r = mul(line_number);
-	else if (check_string(s1, "mod") == 0)
-		r = modu(line_number);
-	else if (check_string(s1, "div") == 0)
-		r = divd(line_number);
 	else
-	{/*After checking for all functions */
-		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", line_number, s1);
-		r = -1;
+	{ /* Perform additional checks on s1 */
+		r = str_parser2_helper(s1, line_number);
 	}
 	return (r);
 }

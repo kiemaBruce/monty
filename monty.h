@@ -73,5 +73,7 @@ int sub(unsigned int line_number);
 int divd(unsigned int line_number);
 int mul(unsigned int line_number);
 int modu(unsigned int line_number);
+int check_comment(char *s);
+int str_parser2_helper(char *s, unsigned int line_number);
 
 #endif /* MONTY_H */
