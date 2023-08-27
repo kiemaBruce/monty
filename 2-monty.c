@@ -48,11 +48,8 @@ int str_parser2(char *s, unsigned int line_number)
 			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 			r = -1;
 		} else
-		{
 			r = push(atoi(s2));
-		}
-	}
-	else if (check_string(s1, "pall") == 0)
+	} else if (check_string(s1, "pall") == 0)
 		r = printall();
 	else if (check_string(s1, "pint") == 0)
 		r = pint(line_number);
@@ -68,6 +65,8 @@ int str_parser2(char *s, unsigned int line_number)
 		r = sub(line_number);
 	else if (check_string(s1, "mul") == 0)
 		r = mul(line_number);
+	else if (check_string(s1, "mod") == 0)
+		r = modu(line_number);
 	else if (check_string(s1, "div") == 0)
 		r = divd(line_number);
 	else
