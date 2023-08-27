@@ -77,6 +77,9 @@ int str_parser2_helper(char *s1, unsigned int line_number)
 	else if (check_string(s1, "rotl") == 0)
 	{
 		r = rotl();
+	} else if (check_string(s1, "rotr") == 0)
+	{
+		r = rotr();
 	}
 	else
 	{/* opcode isn't a recongnized function */

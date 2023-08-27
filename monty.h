@@ -78,5 +78,6 @@ int str_parser2_helper(char *s, unsigned int line_number);
 int pchar(unsigned int line_number);
 int pstr(void);
 int rotl(void);
+int rotr(void);
 
 #endif /* MONTY_H */

@@ -29,3 +29,30 @@ int rotl(void)
 	}
 	return (0);
 }
+/**
+  * rotr - rotates the stack to the bottom.
+  * Description: The last element of the stack becomes the top element of the
+  * stack.
+  * Return: always 0 (success).
+  */
+int rotr(void)
+{
+	stack_t *trav;
+
+	if (count_stack() <= 1)
+		return (0);
+	trav = top;
+	while (trav != NULL)
+	{
+		if (trav->next == NULL)
+		{
+			(trav->prev)->next = NULL;
+			trav->next = top;
+			trav->prev = NULL;
+			top = trav;
+			break;
+		}
+		trav = trav->next;
+	}
+	return (0);
+}
