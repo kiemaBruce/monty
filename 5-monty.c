@@ -66,6 +66,10 @@ int str_parser2_helper(char *s1, unsigned int line_number)
 	{
 		r = divd(line_number);
 	}
+	else if (check_string(s1, "pchar") == 0)
+	{
+		r = pchar(line_number);
+	}
 	else
 	{/* opcode isn't a recongnized function */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",
@@ -73,4 +77,27 @@ int str_parser2_helper(char *s1, unsigned int line_number)
 		r = -1;
 	}
 	return (r);
+}
+/**
+  * pchar - prints the character at the top of the stack plus a new line.
+  * @line_number: the line in the opcode file that is being processed.
+  * Return: o if successful and -1 if the stack is empty or if the value at the
+  * top of the stack is not in the ASCII table.
+  */
+int pchar(unsigned int line_number)
+{
+	if (count_stack() < 1)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pchar, stack empty\n",
+				line_number);
+		return (-1);
+	}
+	if (top->n < 0 || top->n > 127)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pchar, value out of range\n"
+				, line_number);
+		return (-1);
+	}
+	printf("%c\n", top->n);
+	return (0);
 }
