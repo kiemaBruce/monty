@@ -70,6 +70,10 @@ int str_parser2_helper(char *s1, unsigned int line_number)
 	{
 		r = pchar(line_number);
 	}
+	else if (check_string(s1, "pstr") == 0)
+	{
+		r = pstr();
+	}
 	else
 	{/* opcode isn't a recongnized function */
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",
@@ -99,5 +103,38 @@ int pchar(unsigned int line_number)
 		return (-1);
 	}
 	printf("%c\n", top->n);
+	return (0);
+}
+/**
+  * pstr - prints the string starting at top of stack, followed by a newline.
+  * Description: each integer stored in each element of the stack is treated as
+  * the ascii value of the character to be printed. If the stack is empty only
+  * a newline is printed.
+  * Return: Always 0(success).
+  */
+int pstr(void)
+{
+	int c;
+	stack_t *temp;
+
+	if (top == NULL)
+	{
+		printf("\n");
+	}
+	else
+	{
+		temp = top;
+		while (temp != NULL)
+		{
+			c = temp->n;
+			if (c == 0 || c < 0 || c > 127)
+			{
+				break;
+			}
+			printf("%c", c);
+			temp = temp->next;
+		}
+		printf("\n");
+	}
 	return (0);
 }
