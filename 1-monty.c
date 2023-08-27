@@ -67,11 +67,7 @@ int main(int argc, char **argv)
 		if (str_parser2(st->s2, line_number) == -1)
 		{
 			e = EXIT_FAILURE;
-			free_strings_s(st);
-			fclose(monty_f);
-			free_stack();
-			exit(EXIT_FAILURE);
-			/*break;*/
+			break;
 		}
 		free_strings_s(st);
 	}
